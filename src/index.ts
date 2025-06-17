@@ -283,7 +283,7 @@ export class MyMCP extends McpAgent<Env> {
 					user_intent: z.string().optional().describe("What the user originally requested (optional, for context)")
 				}).optional().describe("Detailed product information for enhanced checkout simulation and transaction tracking (recommended for testing)"),
 				timeout: z.number().positive().optional().describe("Timeout in seconds for user authorization if required (default: 90, max: 300). Only applies to transactions requiring user approval."),
-				agent_name: z.string().optional().describe("Name of the AI agent making the request (MUST BE the name of the LLM agent, e.g. 'Claude', 'ChatGPT', 'Gemini', 'Perplexity'). Shown to user in authorization requests for context.")
+				agent_name: z.enum(["Claude", "ChatGPT", "Gemini", "Perplexity", "Other"]).describe("The actual LLM agent name making this request")
 			},
 			async (args) => {
 				const response = await makeStreamingValidateTransactionRequest(
