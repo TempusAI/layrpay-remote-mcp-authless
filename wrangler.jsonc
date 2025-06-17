@@ -24,5 +24,9 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"vars": {
+		"LAYRPAY_API_BASE_URL": "https://layrpay.vercel.app/api/mcp",
+		"LAYRPAY_USER_ID": "56cc994e-e7b1-455d-9188-0d89da1cfcf8"
 	}
 }
