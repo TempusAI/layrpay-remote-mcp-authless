@@ -233,9 +233,9 @@ export class MyMCP extends McpAgent<Env> {
 		// Get spending limits tool
 		this.server.tool(
 			"layrpay_get_limits",
-			"Get user's spending limits and available balances for AI agent spending",
+			"Get user's current spending limits and available balances to check if a planned transaction will require user approval. Use this tool BEFORE calling layrpay_validate_transaction to determine if the transaction amount would exceed any spending limits (per-transaction, daily, weekly, or monthly). If the planned transaction would exceed limits, inform the user that they will need to approve the request in the LayrPay app before proceeding with validation. This allows you to set proper expectations and avoid surprising users with approval requests.",
 			{
-				currency: z.string().optional().describe("Optional currency code (e.g., USD, EUR) to convert limits to")
+				currency: z.string().optional().describe("Optional currency code (e.g., USD, EUR) to convert limits to. Use the same currency as your planned transaction for accurate comparison.")
 			},
 			async ({ currency }) => {
 				const url = new URL(`${this.env.LAYRPAY_API_BASE_URL}/limits`);
