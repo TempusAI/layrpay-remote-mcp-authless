@@ -199,6 +199,7 @@ export class MyMCP extends McpAgent<Env> {
 	server = new McpServer({
 		name: "LayrPay MCP Server",
 		version: "1.0.0",
+		logo: "https://your-domain.com/path-to-layrpay-logo.png"
 	});
 
 	protected env: Env;
